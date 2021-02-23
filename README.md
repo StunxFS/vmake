@@ -6,11 +6,17 @@ A building system for projects made with the V language (WIP).
 
 **Example of a build script:**
 
-```python
-# VMake build scripting language
+```v
+// build.vsh | run with: vmake .
+import stunxfs.vmake
 
-require_v(latest);
-require_vmake(latest);
+vmake.require_v_latest()
+vmake.require_vmake_latest()
 
-run_v_build(BUILD_MODE, "-o", exe_name(join_path("bin", "vmake_test")));
+mod := 'stunxfs.fakemod'
+if !vmake.user_has_mod(mod) {
+    vmake.user_install_mod(mod)
+}
+
+vmake.run_v(vmake.get_build_mod(), '-o', vmake.exe_name('vmake'))
 ```
