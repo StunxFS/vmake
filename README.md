@@ -4,14 +4,25 @@
 
 A building system for projects made with the V language (WIP).
 
-**Example of a build script:**
+## Installation
+
+> Very soon the process will be accomplished with a `vmake .`
+
+```bash
+git clone https://github.com/StunxFS/vmake
+cd vmake
+v -prod cmd/ -o vmake
+./vmake setup
+```
+
+## Example
 
 ```v
 // build.vsh | run with: vmake .
 import stunxfs.vmake
 
-vmake.require_v_latest()
-vmake.require_vmake_latest()
+vmake.require_v('latest')
+vmake.require_vmake('latest')
 
 mod := 'stunxfs.fakemod'
 if !vmake.user_has_mod(mod) {
