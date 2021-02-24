@@ -18,7 +18,7 @@ v -prod cmd/ -o vmake
 ## Example
 
 ```v
-// build.vsh | run with: vmake
+// build.vmake | run with: vmake
 import stunxfs.vmake
 
 fn build(mut b vmake.Builder) {
