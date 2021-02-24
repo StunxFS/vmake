@@ -6,22 +6,18 @@ A building system for projects made with the V language (WIP).
 
 ## Installation
 
-> Very soon the process will be accomplished with a `vmake .`
-
 ```bash
-git clone https://github.com/StunxFS/vmake
-cd vmake
-v -prod cmd/ -o vmake
-./vmake setup
+v install stunxfs.vmake
 ```
 
 ## Example
 
 ```v
-// build.vmake | run with: vmake
+// build.vsh | run with: v run build.vsh
 import stunxfs.vmake
 
-fn build(mut b vmake.Builder) {
+mut builder := vmake.new_builder()
+builder.run(fn (mut b vmake.Builder) {
 	b.require_v('latest')
 	b.require_vmake('latest')
 
@@ -30,6 +26,6 @@ fn build(mut b vmake.Builder) {
 	    b.user_install_mod(mod)
 	}
 
-	b.run_v(b.get_build_mode(), '-o', b.exe_name('vmake'))
-}
+	b.run_v(b.get_build_mode(), '-o', b.exe_name('vmake_test'), 'testapp/')
+})
 ```
