@@ -18,19 +18,18 @@ v -prod cmd/ -o vmake
 ## Example
 
 ```v
-// build.vsh | run with: vmake .
-import stunxfs.vmake {
-	require_v, require_vmake, user_has_mod, user_install_mod, run_v,
-	get_build_mode, exe_name
+// build.vsh | run with: vmake
+import stunxfs.vmake
+
+fn build(mut b vmake.Builder) {
+	b.require_v('latest')
+	b.require_vmake('latest')
+
+	mod := 'stunxfs.fakemod'
+	if !b.user_has_mod(mod) {
+	    b.user_install_mod(mod)
+	}
+
+	b.run_v(b.get_build_mode(), '-o', b.exe_name('vmake'))
 }
-
-require_v('latest')
-require_vmake('latest')
-
-mod := 'stunxfs.fakemod'
-if !user_has_mod(mod) {
-    user_install_mod(mod)
-}
-
-run_v(get_build_mode(), '-o', exe_name('vmake'))
 ```
