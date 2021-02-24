@@ -1,6 +1,8 @@
 Module {
 	name: 'vmake'
 	description: 'A building system for projects made with the V language'
-	version: '0.0.0'
+	version: '0.1.0'
+	license: 'MIT'
+	repo_url: 'https://github.com/StunxFS/vmake'
 	dependencies: []
 }

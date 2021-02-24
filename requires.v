@@ -5,10 +5,10 @@ import net.http
 import os
 
 fn version2str(ver semver.Version) string {
-	return "${ver.major}.${ver.minor}.${ver.patch}"
+	return '${ver.major}.${ver.minor}.$ver.patch'
 }
 
-const v_mod = "https://raw.githubusercontent.com/vlang/v/master/v.mod"
+const v_mod = 'https://raw.githubusercontent.com/vlang/v/master/v.mod'
 
 fn get_latest() string {
 	resp := http.get(v_mod) or {
@@ -50,4 +50,3 @@ pub fn require_v(version string) {
 		}
 	}
 }
-
