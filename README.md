@@ -16,16 +16,14 @@ v install stunxfs.vmake
 // build.vsh | run with: v run build.vsh
 import stunxfs.vmake
 
-mut builder := vmake.new_builder()
-builder.run(fn (mut b vmake.Builder) {
-	b.require_v('latest')
-	b.require_vmake('latest')
+mut b := vmake.new_builder()
+b.require_v('latest')
+b.require_vmake('latest')
 
-	mod := 'stunxfs.fakemod'
-	if !b.user_has_mod(mod) {
-	    b.user_install_mod(mod)
-	}
+mod := 'stunxfs.fakemod'
+if !b.user_has_mod(mod) {
+    b.user_install_mod(mod)
+}
 
-	b.run_v(b.get_build_mode(), '-o', b.exe_name('vmake_test'), 'testapp/')
-})
+b.run_v(b.get_build_mode(), '-o', b.exe_name('vmake_test'), 'testapp/')
 ```
