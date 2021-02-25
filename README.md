@@ -2,7 +2,8 @@
 
 > WIP, because I'm busy for now :).
 
-A building system for projects made with the V language (WIP).
+VMake is a simple library that can be used in both a V code file and a V script file.
+The most common would be to use it in a V script, as shown below in the example.
 
 ## Installation
 
