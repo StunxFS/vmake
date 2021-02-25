@@ -8,10 +8,6 @@ import os
 
 // require_v checks that the user has the required compiler version v installed
 pub fn (b Builder) require_v(version string) {
-	if version != 'latest' && !semver.is_valid(version) {
-		b.error('the version obtained is invalid ("$version")')
-		return
-	}
 	ver := os.exec('v version') or {
 		b.error(err)
 		return
@@ -29,6 +25,10 @@ pub fn (b Builder) require_v(version string) {
 		mut mversion := version
 		if mversion == 'latest' {
 			mversion = get_latest()
+		}
+		if !semver.is_valid(mversion) {
+			b.error('the version obtained is invalid ("$version")')
+			return
 		}
 		if !sver.satisfies(mversion) {
 			b.error('your current version of V ("${version2str(sver)}") does not meet the required version ("$version")')
